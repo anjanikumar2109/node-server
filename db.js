@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('database', 'username', 'password', {
+const sequelize = new Sequelize('database', 'postgres', 'admin@1234', {
     host: 'localhost',
-    dialect: 'mssql',
-    port: 1433,
+    dialect: 'postgres',
+    port: 5432,
     operatorsAliases: false,
     pool: {
         max: 5,

@@ -6,7 +6,8 @@ module.exports = (sequelize, Sequelize) => {
     });
 
     Department.associate = (models) => {
-        Department.hasMany(models.Employee, { foreignKey: { allowNull: false }, hooks: true });
+        Department.hasMany(models.Employee, { foreignKey: { allowNull: false }, onDelete: 'CASCADE', hooks: true });
+        Department.hasMany(models.Function);
     };
 
     return Department;
