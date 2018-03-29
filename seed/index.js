@@ -6,7 +6,7 @@ const seed = () => {
         .then((department) => {
             Employee.create({ firstName: 'E', lastName: '1', DepartmentId: department.id })
                 .then((employee) => {
-                    Function.create({ name: 'F'}).then((f) => {
+                    Function.create({ name: 'F', DepartmentId: department.id }).then((f) => {
                         department.destroy().then(() => {
                             Employee.findById(employee.id).then((employee) => {
                                 console.log(`Employee ${employee}`);
