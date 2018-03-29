@@ -4,11 +4,16 @@
   "description": "sample node server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Anjani Kumar",
   "license": "ISC",
   "dependencies": {
-    "sequelize": "^4.37.5"
+    "globby": "^8.0.1",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.37.5",
+    "tedious": "^2.3.1"
   }
 }
