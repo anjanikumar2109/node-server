@@ -6,9 +6,9 @@ source
     .authenticate()
     .then(() => {
         console.log('Connection has been established successfully.');
-        source.sync({ force: false }).then(() => {
+        source.sync({ force: true }).then(async () => {
            console.log('Models synced successfully');
-           seed();
+           await seed();
         });
     })
     .catch(err => {

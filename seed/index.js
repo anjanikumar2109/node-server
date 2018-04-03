@@ -1,24 +1,15 @@
 const models = require('../model');
 
-const seed = () => {
+const seed = async () => {
     const { Employee, Department, Function } = models;
-    Department.create({ name: 'D1' })
-        .then((department) => {
-            Employee.create({ firstName: 'E', lastName: '1', DepartmentId: department.id })
-                .then((employee) => {
-                    Function.create({ name: 'F', DepartmentId: department.id }).then((f) => {
-                        department.destroy().then(() => {
-                            Employee.findById(employee.id).then((employee) => {
-                                console.log(`Employee ${employee}`);
-                                Function.findById(f.id).then((f1) => {
-                                    console.log(`Function ${f1}`);
-                                });
-                            })
-                        });
-                    });
-
-                });
-        });
+    const department = await Department.create({ name: 'D1' });
+    const employee = await Employee.create({ firstName: 'E', lastName: '1', DepartmentId: department.id });
+    const f = await Function.create({ name: 'F', DepartmentId: department.id });
+    await department.destroy();
+    const emp = await Employee.findById(employee.id);
+    console.log(`Employee ${emp}`);
+    const f1 = await Function.findById(f.id);
+    console.log(`Function ${f1}`);
 };
 
 module.exports = seed;
